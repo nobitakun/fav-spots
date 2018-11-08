@@ -1,5 +1,5 @@
 class SpotsController < ApplicationController
-  before_action :require_admin_logged_in, only: [:new, :create, :edit, :updeate, :destroy]
+  #before_action :require_admin_logged_in, only: [:new, :create, :edit, :updeate, :destroy]
   before_action :set_spot, only: [:show, :edit, :update, :destroy, :reviews]
   
   def index
