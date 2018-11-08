@@ -167,10 +167,16 @@ section{
     #category-sort{
       width: 20%;
       float: left;
+      @include media-breakpoint-down(sm){
+        width: 50%;
+      }
     }
     #category-field{
       width: 80%;
       float: left;
+      @include media-breakpoint-down(sm){
+        width: 50%;
+      }
     }
   }
 }
@@ -279,6 +285,9 @@ section{
 .tab-content{
   border: 1px solid #eee;
   padding: 40px;
+  @include media-breakpoint-down(sm){
+    padding: 12px;
+  }
 }
 
 .dropdown-menu {
