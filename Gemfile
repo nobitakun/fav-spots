@@ -55,6 +55,8 @@ gem 'geokit-rails'
 
 gem 'unicorn'
 
+gem 'faraday'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
