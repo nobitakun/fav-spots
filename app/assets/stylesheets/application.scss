@@ -310,6 +310,12 @@ section{
       }
     }
   }
+  .article-list{
+    display: flex;
+    li{
+      width: 25%;
+    }
+  }
 }
 
 
