@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=<%= ENV['GA_ID'] %>"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    
+    gtag('config', '<%= ENV['GA_ID'] %>');
+    </script>
+
     <title><%= content_for?(:title) ? yield(:title) + ' | 社寺の杜' : '社寺の杜' %></title>
     <%= yield(:meta) %>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
@@ -10,6 +20,8 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="//kitchen.juicer.cc/?color=" async></script>
+    <meta name="google-site-verification" content="<%= ENV['SEARCH_CONSOLE_ID'] %>" />
   </head>
 
   <body class="<%= yield(:body_class) %>" id="<%= yield(:body_id) %>">
