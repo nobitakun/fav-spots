@@ -42,6 +42,11 @@
   </div>
   
   <div class="form-group">
+    <%= f.label :overview, '概要' %>
+    <%= f.text_area :overview, class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">
     <%= f.label :category_ids, 'ご利益', class: 'cat-label' %>
     <%= f.collection_check_boxes(:category_ids, Category.where(category_type: 'luck'), :id, :name) do |b| %>
       <div class="form-check form-check-inline">
