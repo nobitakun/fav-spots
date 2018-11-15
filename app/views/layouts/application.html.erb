@@ -20,7 +20,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="//kitchen.juicer.cc/?color=<% ENV['JUICER_ID'] %>" async></script>
+    <script src="//kitchen.juicer.cc/?color=<%= ENV['JUICER_ID'] %>" async></script>
     <meta name="google-site-verification" content="<%= ENV['SEARCH_CONSOLE_ID'] %>" />
   </head>
 
