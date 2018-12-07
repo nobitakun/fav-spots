@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
+  layout "application_one_column"
   def home
-    @reviews = Review.limit(10).order('created_at DESC')
+    @reviews = Review.limit(4).order('created_at DESC')
     @prefs = JpPrefecture::Prefecture.all
     
     conn = Faraday.new(url: ENV['WP_PATH']) do |faraday|

@@ -19,6 +19,95 @@
 @import 'bootstrap';
 @import 'font-awesome';
 
+$white: #fff;
+$light-brown: #a0662c;
+$dark-brown: #534640;
+$cream: #f9f6e6;
+
+.text_light_brown{
+  color: $light-brown;
+}
+
+
+.bg_cream{
+  background: $cream;
+}
+
+/*
+ * Bootstrap Override
+ */
+
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+
+
+
+
+/*
+ * Common
+ */
+
+a:hover{
+  opacity: 0.7;
+}
+
+
+/*
+ * Button
+ */
+
+.button_m{
+  background: #d4451d;
+  width: 342px;
+  color: $white;
+  display: block;
+  font-size: 16px;
+  border-radius: 30px;
+  padding: 10px 0;
+  position: relative;
+  &:hover{
+    color: $white;
+    text-decoration: none;
+  }
+  &:after{
+    font-family: "FontAwesome";
+    content: "\f105";
+    position: absolute;
+    font-size: 22px;
+    right: 24px;
+    top: 50%;
+    margin-top: -16px;
+  }
+}
+
+
+
 #sideAd{
   width: 300px;
   height: 250px;
@@ -29,85 +118,185 @@
 
 body {
   padding-top: 74px;
+  background: #fbf1e2;
+  font-family: "Yu Gothic", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", メイリオ, Meiryo, Verdana, Roboto, "Droid Sans";
+  font-size: 14px;
+  font-weight: 500;
+}
+
+a.hover:hover{
+  opacity: 0.7;
 }
 
 section{
+  padding: 80px 0;
   margin-bottom: 2rem;
   img{
     max-width: 100%;
   }
+  h1{
+    font-size: 34px;
+    font-weight: 500;
+    margin-bottom: 40px;
+  }
 }
 
-/*
- * Typography
- */
-.main-content{
-  h1 {
-    padding-bottom: 9px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #eee;
-    font-size: 22px;
-    font-weight: bold;
+
+
+/* header */
+#headerNav{
+  background: #d4451d;
+  .logo{
+    width: 162px;
   }
-  
-  h2 {
-    padding-bottom: 9px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #eee;
-    font-size: 16px;
-    font-weight: bold;
+  .site_description{
+    color: #fff;
+    font-size: 12px;
   }
-  
-  h3 {
-    margin-bottom: 14px;
-    font-size: 14px;
-    font-weight: bold;
-  }
-  
-  p{
-    font-size: 14px;
-  }
-  ul{
-    li{
-      list-style: none;
+  .navbar-nav{
+    .nav-item{
+      align-items: center;
+      display: flex;
+      .nav-link{
+        color: #fff;
+        font-weight: 500;
+      }
+    }
+    .current-user-icon{
+      .thumb{
+        width: 40px;
+      }
+    }
+    .dropdown-menu{
+      h2{
+        padding: 0.25rem 1.5rem 0.8rem;
+        font-size: 16px;
+        border-bottom: 1px solid #eee;
+      }
     }
   }
-  hr{
-    margin-bottom: 2rem;
-    border-top: 1px solid #eee;
+}
+
+#subNab{
+  .navbar-nav{
+    .nav-item{
+      font-size: 12px;
+      align-items: center;
+      i{
+        font-size: 16px;
+      }
+      &.sns_icon{
+        margin-left: 14px;
+        i{
+          font-size: 26px;
+        }
+      }
+      .nav-link{
+        color: #534640;
+      }
+    }
   }
 }
 
+
 /*
- * Sidebar
+ * Pages
  */
 
-.sidebar {
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1000;
-  padding: 20px 0 20px 20px;
-  overflow-x: hidden;
-  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-  border-left: 1px solid #eee;
+/* home */
+.home{
+  .jumbotron{
+    background: image-url('kv.png') center center no-repeat #fbf1e2;
+    color: #fff;
+    font-weight: bold;
+    padding: 150px 0;
+    h1{
+      font-size: 40px;
+      text-shadow: 1px 1px 3px #000;
+    }
+  }
 }
 
-.sidebar .nav {
-  margin-bottom: 20px;
+
+
+/*
+ * Comportnents
+ */
+
+.area_link{
+  background: $white;
+  border: 1px solid #d4cecd;
+  padding: 24px;
+  li{
+    list-style: none;
+  }
+  .big_city_list{
+    display: flex;
+    margin: 0 -2px;
+    li{
+      margin: 0 2px;
+      a{
+        color: $white;
+        padding: 54px 0;
+        width: 147px;
+        display: block;
+        background: #333;
+        font-size: 26px;
+        text-shadow: 1px 1px 2px #000;
+        &.tokyo_link{
+          background: image-url('tokyo_thumb.png') center center no-repeat;
+        }
+        &.osaka_link{
+          background: image-url('osaka_thumb.png') center center no-repeat;
+        }
+        &.kyoto_link{
+          background: image-url('kyoto_thumb.png') center center no-repeat;
+        }
+        &.aichi_link{
+          background: image-url('aichi_thumb.png') center center no-repeat;
+        }
+        &.fukuoka_link{
+          background: image-url('fukuoka_thumb.png') center center no-repeat;
+        }
+      }
+    }
+  }
+  .pref_list{
+    li{
+      h2{
+        font-size: 13px;
+        color: #666;
+        margin-bottom: 2px;
+      }
+      ul{
+        margin-bottom: 12px;
+        li{
+          border-right: 1px dotted #e5d7d1;
+          padding-right: 3px;
+          margin-right: 3px;
+          &:last-child{
+            border-right: 0px;
+            padding-right: 0;
+            margin-right: 0;
+          }
+          a{
+            font-size: 11px;
+            color: #af3501;
+          }
+        }
+      }
+    }
+  }
 }
 
-.sidebar .nav-item {
-  width: 100%;
-}
 
-.sidebar .nav-item + .nav-item {
-  margin-left: 0;
-}
 
-.sidebar .nav-link {
-  border-radius: 0;
-}
+
+
+
+
+
+
 
 
 /* error */
@@ -124,28 +313,6 @@ section{
 }
 
 
-/* header */
-.navbar{
-  background: #d4451d;
-  .navbar-nav{
-    .nav-item{
-      align-items: center;
-      display: flex;
-    }
-    .current-user-icon{
-      .thumb{
-        width: 40px;
-      }
-    }
-    .dropdown-menu{
-      h2{
-        padding: 0.25rem 1.5rem 0.8rem;
-        font-size: 16px;
-        border-bottom: 1px solid #eee;
-      }
-    }
-  }
-}
 
 
 
@@ -224,16 +391,21 @@ section{
 }/* .spot-list */
 
 .review-list{
+  border-right: 1px solid #dfcca1;
+  a{
+    color: #534640;
+  }
   li{
+    border-top: 1px solid #dfcca1;
+    border-left: 1px solid #dfcca1;
+    border-bottom: 1px solid #dfcca1;
+    list-style: none;
     .thumb{
-      width: 120px;
-      height: 120px;
       @include media-breakpoint-up(md){
-        width: 240px;
-        height: 240px;
+        width: 100%;
       }
     }
-    .card-body{
+    div{
        @include media-breakpoint-down(sm){
          padding: 0.5rem;
        }
@@ -249,9 +421,9 @@ section{
         box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.1);
         margin-right: 10px;
       }
-      h3{
-        font-size: 16px;
-        font-weight: bold;
+      h2{
+        font-size: 20px;
+        font-weight: 500;
       }
     }
   }
@@ -295,38 +467,6 @@ section{
   right: 0;
   margin: 6px -1px 0 0;
 }
-
-
-/*
- * Pages
- */
-
-/* home */
-.home{
-  .pref-box{
-    ul{
-      li{
-        font-size: 13px;
-      }
-    }
-  }
-  .article-list{
-    display: flex;
-    li{
-      width: 25%;
-    }
-  }
-}
-
-
-
-
-
-
-
-
-
-
 
 
 /* kaminari */
