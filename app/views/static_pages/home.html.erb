@@ -200,41 +200,35 @@
   </div>
 </section>
 
-
-
-
-
-
-<section class="home">
-
-  
-  <h1>新着の口コミ</h1>
-  
-  
-  
-  <h1>コラム</h1>
-  
-  <ul class="article-list">
-    <% @parsed_articles.each do |article| %>
-      <li>
-        <a href="<%= article['link'] %>"><%= article['title']['rendered'] %></a>
-        <%= link_to article['link'] do %>
-          <% if article['_embedded']['wp:featuredmedia'].present? %>
-            <%= image_tag article['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['full']['source_url'] %>
-          <% else %>
-            <%= image_tag 'review_no_image_300.png'%>
+<section>
+  <div class="container">
+    <h1 class="text-center">コラム</h1>
+    <ul class="article-list row">
+      <% @parsed_articles.each do |article| %>
+        <li class="col-3 p-0">
+          <%= link_to article['link'] do %>
+            <% if article['_embedded']['wp:featuredmedia'].present? %>
+              <%= image_tag article['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['full']['source_url'] %>
+            <% else %>
+              <%= image_tag 'review_no_image_300.png'%>
+            <% end %>
           <% end %>
-        <% end %>
-        
-        
-        <% if article['_embedded']['wp:featuredmedia'].present? %>
-          <a href="<%= article['link'] %>"></a>
-        <% else %>
-        <% end %>
-        <%== article['excerpt']['rendered'] %>
-      </li>
-    <% end %>
-  </ul>
-  
-  
+          
+          
+          <a href="<%= article['link'] %>"><%= article['title']['rendered'] %></a>
+          <% if article['_embedded']['wp:term'].present? %>
+            <%= article['_embedded']['wp:term'][0][0]['name'] %>
+          <% end %>
+          
+          
+          
+          <% if article['_embedded']['wp:featuredmedia'].present? %>
+            <a href="<%= article['link'] %>"></a>
+          <% else %>
+          <% end %>
+          <%== article['excerpt']['rendered'] %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </section>
