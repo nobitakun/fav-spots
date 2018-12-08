@@ -55,10 +55,23 @@ class SpotsController < ApplicationController
     @prefname = @pref.name
   end
   
-  def search
+  def spot_search
     @features = Category.where(category_type: 'feature')
     @lucks = Category.where(category_type: 'luck')
     @routes = Category.where(category_type: 'route')
+  end
+  
+  def spot_filter
+    @spots = Spot.all
+    
+    if params[:pref].present?
+      @spots = @spots.where(pref: params[:pref])
+    end
+    
+    if params[:category_id].present?
+      @spots = @spots.includes(:categories).where(categories: { id: params[:category_id] })
+    end
+    
   end
   
   #読み込み時現在地から

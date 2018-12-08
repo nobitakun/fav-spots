@@ -62,7 +62,7 @@
       <p class="border-bottom pb-3 pt-3 mb-0">緯度: <%= @spot.latitude %> 経度: <%= @spot.longitude %></p>
     <% end %>
     <% if @spot.phone.present? %>
-      <p class="border-bottom pb-3 pt-3 mb-0">電話番号: <%= link_to @spot.phone, 'tel:' + @spot.phone %></p>
+      <p class="border-bottom pb-3 pt-3 mb-0">電話番号: <%= @spot.phone.present? ? (link_to @spot.phone, 'tel:' + @spot.phone) : '' %></p>
     <% end %>
     <% if @spot.since.present? %>
       <p class="border-bottom pb-3 pt-3 mb-0">設立: <%= @spot.since %></p>

@@ -9,16 +9,56 @@
   <div class="container">
     <h1 class="jumbotron-heading">条件に合った神社仏閣を探す</h1>
     <p class="lead">エリア・ご利益・巡礼・フリーワードで検索できます。</p>
+    
+    <div id="homeForm" class="d-flex">
+      
+      <%= form_tag spot_filter_path, method:'get', class: 'filter-form filter d-flex bg-white' do %>
+        <div class="select_wrap pl-2" id="prefWrap">
+          <%= collection_select('', :pref, JpPrefecture::Prefecture.all, :name_e, :name, {prompt: '都道府県'}, { class: 'form-control' } ) %>
+        </div>
+        <div class="select_wrap" id="categoryTypeWrap">
+          <%= select '', :category_type, [["特徴", 'feature'], ["ご利益", 'luck'], ["巡礼", 'route']], { prompt: "カテゴリー" }, {class: "form-control", id: 'category-sort'} %>
+        </div>
+        <div class="select_wrap" id="categoryWrap">
+          <%= collection_select('', :category_id, Category.all, :id, :name, {prompt: "カテゴリーを選択してください"}, { class: 'form-control', id: 'category-field' } ) %>
+        </div>
+        <%= button_tag(sanitize('<i class="fa fa-search"></i>'), class: 'btn btn-block hover') %>
+      <% end %>
+      
+      <%= form_tag spot_filter_path, method:'get', class: 'search-form filter d-flex ml-auto bg-white' do %>
+        <%= text_field :keywords, :keyword, placeholder: 'フリーワード検索', class: 'form-control', id: 'searchField' %>
+        <%= button_tag(sanitize('<i class="fa fa-search"></i>'), class: 'btn btn-block hover') %>
+      <% end %>
+      
+    </div><!-- #homeForm -->
+    
+    <div class="row mt-5">
+      <%= link_to '現在地周辺の神社仏閣を探す', root_path, class: 'button_m btn_white mr-auto ml-auto' %>
+    </div>
+    
+    <script>
+      $(document).on('change', '#category-sort', function(){
+        var value = $(this).val();
+        $.ajax({
+          type: "GET",
+          url: "<%= ajax_category_select_url %>",
+          data: `value=${value}`
+        });
+      });
+    </script>
+    
+    
+    
   </div>
 </section>
 
-<section class="text-center mb-0 bg_cream">
+<section class="mb-0 bg_cream">
   <div class="container">
-    <h1 class="text_light_brown">全国の神社仏閣</h1>
+    <h1 class="text_light_brown text-center">全国の神社仏閣</h1>
     <div class="row">
       
       <div class="col-8 area_link">
-        <ul class="big_city_list">
+        <ul class="big_city_list text-center">
           <li><%= link_to '東京', root_path, class: 'tokyo_link' %></li>
           <li><%= link_to '大阪', root_path, class: 'osaka_link' %></li>
           <li><%= link_to '京都', root_path, class: 'kyoto_link' %></li>
@@ -110,14 +150,14 @@
   </div>
 </section>
 
-<section class="text-center mb-0 bg-white">
+<section class="mb-0 bg-white">
   <div class="container">
-    <h1 class="">新着の口コミ</h1>
+    <h1 class="text-center text_dark_brown">新着の口コミ</h1>
     
     <% if @reviews.any? %>
       <ul class="review-list row mb-5">
         <% @reviews.each do |review| %>
-          <%= render '/reviews/review', review: review %>
+          <%= render '/reviews/top_review', review: review %>
         <% end %>
       </ul>
       <div class="row">
@@ -130,7 +170,31 @@
   </div>
 </section>
 
+<section id="topInfoArea" class="mb-0">
+  <div class="container">
+    <h1 class="text-center text-white">お知らせ</h1>
+    <div class="row mb-5">
+      <ul class="col-9 mr-auto ml-auto mb-0" id="topInfoList">
+        <% @infos.each do |info| %>
+          <li>
+            <%= link_to content_tag(:span, info.created_at.strftime('%Y.%m.%d'), class: 'mr-5') + info.title, info.url, {target: '_blank'} %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="row">
+      <%= link_to 'お知らせをもっと見る', root_path, class: 'button_m btn_white mr-auto ml-auto' %>
+    </div>
+  </div>
+</section>
 
+<section>
+  <div class="container">
+    <h1 class="text-center text-white">神社へ行こう</h1>
+    <div class="row mb-5">
+    </div>
+  </div>
+</section>
 
 
 

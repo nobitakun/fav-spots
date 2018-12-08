@@ -18,10 +18,13 @@ Rails.application.routes.draw do
 
   resources :categories
   
+  resources :infos
+  
   get '/prefs/', to: 'spots#prefs'
   get '/prefs/:pref', to: 'spots#pref', as: 'pref'
   
-  get 'search', to: 'spots#search'
+  get 'spot_search', to: 'spots#spot_search'
+  get 'spot_filter', to: 'spots#spot_filter'
   get 'ajax_select', to: 'spots#ajax_select', as: 'ajax_select'
   get 'ajax_location', to: 'spots#ajax_location', as: 'ajax_location'
   get 'ajax_search', to: 'spots#ajax_search', as: 'ajax_search'
