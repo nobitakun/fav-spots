@@ -175,7 +175,7 @@
     <h1 class="text-center text-white">お知らせ</h1>
     <div class="row mb-5">
       
-      <% @infos.any? %>
+      <% if @infos.any? %>
         <ul class="col-9 mr-auto ml-auto mb-0" id="topInfoList">
           <% @infos.each do |info| %>
             <li>
