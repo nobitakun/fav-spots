@@ -3,7 +3,7 @@ class SpotsController < ApplicationController
   before_action :set_spot, only: [:show, :edit, :update, :destroy, :reviews]
   
   def index
-    @spots = Spot.all.order('created_at DESC')
+    @spots = Spot.all.order('created_at DESC').page(params[:page])
   end
 
   def new
