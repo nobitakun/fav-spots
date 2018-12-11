@@ -23,6 +23,7 @@ $white: #fff;
 $light-brown: #a0662c;
 $dark-brown: #534640;
 $cream: #f9f6e6;
+$theme-color: #d4451d;
 
 .text_light_brown{
   color: $light-brown;
@@ -86,11 +87,12 @@ a:hover{
  */
 
 .button_m{
-  background: #d4451d;
+  background: $theme-color;
   width: 342px;
   color: $white;
   display: block;
   font-size: 16px;
+  font-weight: bold;
   border-radius: 30px;
   padding: 10px 0;
   position: relative;
@@ -114,6 +116,16 @@ a:hover{
   background: rgba(0, 0, 0, 0.3);
   border: 2px solid $white;
   box-sizing: border-box;
+}
+
+.btn_border{
+  background: none;
+  border: 2px solid $theme-color;
+  box-sizing: border-box;
+  color: $theme-color;
+  &:hover{
+    color: $theme-color;
+  }
 }
 
 
@@ -293,7 +305,7 @@ section{
         }
       }
     }/* #topInfoArea */
-    .review-list{
+    .vertical-list{
       border-right: 1px solid #dfcca1;
       a{
         color: #534640;
