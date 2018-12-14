@@ -175,7 +175,7 @@
     <h1 class="text-center text-white">お知らせ</h1>
     <% if @infos.any? %>
     <div class="row mb-5">
-      <ul class="col-9 mr-auto ml-auto mb-0" id="topInfoList">
+      <ul class="col-11 col-md-9 mr-auto ml-auto mb-0" id="topInfoList">
         <% @infos.each do |info| %>
           <li>
             <%= link_to content_tag(:span, info.created_at.strftime('%Y.%m.%d'), class: 'mr-5') + info.title, info.url, {target: '_blank'} %>
@@ -192,7 +192,7 @@
   </div>
 </section>
 
-<section class="bg_dark_brown" id="topPickUp">
+<section class="bg_dark_brown mb-0" id="topPickUp">
   <div class="container">
     <h1 class="text-center text-white">神社へ行こう</h1>
     <ul class="d-flex mb-5 row pickup_list">
@@ -232,7 +232,7 @@
     <h1 class="text_light_brown text-center">特集記事</h1>
     <ul class="article-list vertical-list row">
       <% @parsed_columns.each do |article| %>
-        <li class="col-3 bg-white pt-0 pr-0 pl-0 pb-4">
+        <li class="col-6 col-md-3 bg-white pt-0 pr-0 pl-0 pb-4">
           
           <%= link_to article['link'] do %>
             <% if article['_embedded']['wp:featuredmedia'].present? %>
@@ -275,7 +275,7 @@
     <h1 class="text-center">体験記事</h1>
     <ul class="article-list vertical-list row">
       <% @parsed_experiences.each do |article| %>
-        <li class="col-3 bg-white pt-0 pr-0 pl-0 pb-4">
+        <li class="col-6 col-md-3 bg-white pt-0 pr-0 pl-0 pb-4">
           
           <%= link_to article['link'] do %>
             <% if article['_embedded']['wp:featuredmedia'].present? %>
