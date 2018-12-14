@@ -157,6 +157,9 @@ body {
   background: #fbf1e2;
   font-size: 14px;
   font-weight: 500;
+  @include media-breakpoint-down(sm){
+    padding-top: 60px;
+  }
 }
 
 body, input, button, select, optgroup, textarea {
@@ -175,6 +178,10 @@ section{
     font-size: 34px;
     font-weight: 500;
     margin-bottom: 40px;
+    @include media-breakpoint-down(sm){
+      font-size: 24px;
+      margin-bottom: 24px;
+    }
   }
 }
 
@@ -187,6 +194,9 @@ section{
   background: #d4451d;
   .logo{
     width: 162px;
+    @include media-breakpoint-down(sm){
+      width: 100px;
+    }
   }
   .site_description{
     color: #fff;
@@ -235,6 +245,11 @@ section{
       }
     }
   }
+  #headerInfoSNS{
+    @include media-breakpoint-down(sm){
+      margin: 0 auto;
+    }
+  }
 }
 
 .navbar-toggler {
@@ -262,10 +277,16 @@ section{
     font-weight: bold;
     padding: 150px 0;
     border-radius: 0;
+    @include media-breakpoint-down(sm){
+      padding: 64px 0;
+    }
     h1{
       font-size: 40px;
       text-shadow: 1px 1px 3px #000;
       margin-bottom: 20px;
+       @include media-breakpoint-down(sm){
+         font-size: 26px;
+      }
     }
     .lead{
       font-size: 16px;
@@ -277,10 +298,17 @@ section{
     padding: 16px;
     width: 880px;
     margin: 0 auto;
+    flex-wrap: wrap;
+    @include media-breakpoint-down(sm){
+      width: 100%;
+    }
   }
   section{
     padding: 80px 0;
     margin-bottom: 2rem;
+    @include media-breakpoint-down(sm){
+      padding: 40px 0;
+    }
     &#topInfoArea{
       background: image-url('top_info_bg.png') center center no-repeat;
       background-size: cover;
@@ -323,6 +351,9 @@ section{
             overflow: hidden;
             color: $white;
             text-shadow: 1px 1px 3px #000;
+            @include media-breakpoint-down(sm){
+              width: 100%;
+            }
             span{
               position: absolute;
               width: 100%;
@@ -401,6 +432,7 @@ section{
   }
   .big_city_list{
     display: flex;
+    flex-wrap: wrap;
     margin: 0 -2px;
     li{
       margin: 0 2px;
@@ -466,6 +498,9 @@ section{
   border-radius: 4px;
   overflow: hidden;
   width: 63%;
+  @include media-breakpoint-down(sm){
+    width: 100%;
+  }
   .select_wrap{
     position: relative;
     &#prefWrap{
@@ -521,6 +556,9 @@ section{
   border-radius: 4px;
   overflow: hidden;
   width: 35%;
+  @include media-breakpoint-down(sm){
+    width: 100%;
+  }
   .select_wrap{
     width: 100%;
     position: relative;
