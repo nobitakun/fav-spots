@@ -10,9 +10,9 @@
     <h1 class="jumbotron-heading">条件に合った神社仏閣を探す</h1>
     <p class="lead">エリア・ご利益・巡礼・フリーワードで検索できます。</p>
     
-    <div id="homeForm" class="d-flex mb-3 mb-md-5">
+    <div id="homeForm" class="d-none d-sm-flex mb-3 mb-md-5">
       
-      <%= form_tag spot_filter_path, method:'get', class: 'filter-form filter d-flex bg-white' do %>
+      <%= form_tag spot_filter_path, method:'get', class: 'filter-form filter d-flex bg-white mb-4 mb-lg-0' do %>
         <div class="select_wrap pl-2" id="prefWrap">
           <%= collection_select('', :pref, JpPrefecture::Prefecture.all, :name_e, :name, {prompt: '都道府県'}, { class: 'form-control' } ) %>
         </div>
@@ -22,17 +22,18 @@
         <div class="select_wrap" id="categoryWrap">
           <%= collection_select('', :category_id, Category.all, :id, :name, {prompt: "カテゴリーを選択してください"}, { class: 'form-control', id: 'category-field' } ) %>
         </div>
-        <%= button_tag(sanitize('<i class="fa fa-search"></i>'), class: 'btn btn-block hover') %>
+        <%= button_tag(sanitize('<i class="fa fa-search"></i>'), class: 'btn btn-block hover ml-auto') %>
       <% end %>
       
       <%= form_tag spot_filter_path, method:'get', class: 'search-form filter d-flex ml-auto bg-white' do %>
         <%= text_field :keywords, :keyword, placeholder: 'フリーワード検索', class: 'form-control', id: 'searchField' %>
-        <%= button_tag(sanitize('<i class="fa fa-search"></i>'), class: 'btn btn-block hover') %>
+        <%= button_tag(sanitize('<i class="fa fa-search"></i>'), class: 'btn btn-block hover ml-auto') %>
       <% end %>
       
     </div><!-- #homeForm -->
     
     <div class="row">
+      <%= link_to '現在地周辺の神社仏閣を探す', root_path, class: 'd-block d-sm-none button_m btn_white mr-auto ml-auto mb-4' %>
       <%= link_to '現在地周辺の神社仏閣を探す', root_path, class: 'button_m btn_white mr-auto ml-auto' %>
     </div>
     
@@ -47,8 +48,6 @@
       });
     </script>
     
-    
-    
   </div>
 </section>
 
@@ -57,7 +56,7 @@
     <h1 class="text_light_brown text-center">全国の神社仏閣</h1>
     <div class="row">
       
-      <div class="col-12 col-md-8 area_link">
+      <div class="col-12 col-lg-7 col-xl-8 area_link">
         <ul class="big_city_list text-center">
           <li><%= link_to '東京', root_path, class: 'tokyo_link' %></li>
           <li><%= link_to '大阪', root_path, class: 'osaka_link' %></li>
@@ -67,7 +66,7 @@
         </ul>
         
         <ul class="text-left row mb-0 mt-4 pref_list">
-          <li class="col-6">
+          <li class="col-12 col-xl-6">
             <h2>北海道・東北地方</h2>
             <ul class="d-flex">
               <% @prefs.each do |pref| %>
@@ -77,7 +76,7 @@
               <% end %>
             </ul>
           </li>
-          <li class="col-6">
+          <li class="col-12 col-xl-6">
             <h2>関東</h2>
             <ul class="d-flex">
               <% @prefs.each do |pref| %>
@@ -87,7 +86,7 @@
               <% end %>
             </ul>
           </li>
-          <li class="col-6">
+          <li class="col-12 col-xl-6">
             <h2>中部</h2>
             <ul class="d-flex">
               <% @prefs.each do |pref| %>
@@ -97,7 +96,7 @@
               <% end %>
             </ul>
           </li>
-          <li class="col-6">
+          <li class="col-12 col-xl-6">
             <h2>関西</h2>
             <ul class="d-flex">
               <% @prefs.each do |pref| %>
@@ -107,7 +106,7 @@
               <% end %>
             </ul>
           </li>
-          <li class="col-6">
+          <li class="col-12 col-xl-6">
             <h2>中国・四国</h2>
             <ul class="d-flex">
               <% @prefs.each do |pref| %>
@@ -117,7 +116,7 @@
               <% end %>
             </ul>
           </li>
-          <li class="col-6">
+          <li class="col-12 col-xl-6">
           <h2>九州・沖縄</h2>
             <ul class="d-flex">
               <% @prefs.each do |pref| %>
@@ -131,19 +130,21 @@
         
       </div>
       
-      <div class="col-4">
-        <nav>
-          <ul class="nav nav-pills flex-column text-left">
-            <li class="nav-item">
-              <% if current_page?(root_path) %>
-              <a class="nav-link active" href="/"><i class="fa fa-chevron-right"></i> HOME</a>
-              <% else %>
-              <a class="nav-link" href="/"><i class="fa fa-chevron-right"></i> HOME</a>
-              <% end %>
-            </li>
-            <%= sidebar_list_items() %>
-          </ul>
-        </nav>
+      <div class="col-5 col-xl-4">
+        <div class="inner">
+          <nav>
+            <ul class="nav nav-pills flex-column text-left">
+              <li class="nav-item">
+                <% if current_page?(root_path) %>
+                <a class="nav-link active" href="/"><i class="fa fa-chevron-right"></i> HOME</a>
+                <% else %>
+                <a class="nav-link" href="/"><i class="fa fa-chevron-right"></i> HOME</a>
+                <% end %>
+              </li>
+              <%= sidebar_list_items() %>
+            </ul>
+          </nav>
+        </div>
       </div>
       
     </div>
@@ -178,7 +179,7 @@
       <ul class="col-11 col-md-9 mr-auto ml-auto mb-0" id="topInfoList">
         <% @infos.each do |info| %>
           <li>
-            <%= link_to content_tag(:span, info.created_at.strftime('%Y.%m.%d'), class: 'mr-5') + info.title, info.url, {target: '_blank'} %>
+            <%= link_to content_tag(:span, info.created_at.strftime('%Y.%m.%d'), class: 'mr-2 mr-md-5') + info.title, info.url, {target: '_blank'} %>
           </li>
         <% end %>
       </ul>
@@ -196,31 +197,31 @@
   <div class="container">
     <h1 class="text-center text-white">神社へ行こう</h1>
     <ul class="d-flex mb-5 row pickup_list">
-      <li class="col-3 p-0">
+      <li class="col-6 col-lg-3 p-0">
         <a href=""><span class="catch">キャッチコピー</span><%= image_tag 'top_jinjya_thumb_01.png' %><span class="name">伊勢神宮</span></a>
       </li>
-      <li class="col-3 p-0">
+      <li class="col-6 col-lg-3 p-0">
         <a href=""><span class="catch">キャッチコピー</span><%= image_tag 'top_jinjya_thumb_02.png' %><span class="name">出雲大社</span></a>
       </li>
-      <li class="col-3 p-0">
+      <li class="col-6 col-lg-3 p-0">
         <a href=""><span class="catch">キャッチコピー</span><%= image_tag 'top_jinjya_thumb_03.png' %><span class="name">伏見稲荷大社</span></a>
       </li>
-      <li class="col-3 p-0">
+      <li class="col-6 col-lg-3 p-0">
         <a href=""><span class="catch">キャッチコピー</span><%= image_tag 'top_jinjya_thumb_04.png' %><span class="name">厳島神社</span></a>
       </li>
     </ul>
     <h1 class="text-center text-white">お寺へ行こう</h1>
     <ul class="row mb-0 pb-0 pickup_list">
-      <li class="col-3 p-0">
+      <li class="col-6 col-lg-3 p-0">
         <a href=""><span class="catch">キャッチコピー</span><%= image_tag 'top_otera_thumb_01.png' %><span class="name">清水寺</span></a>
       </li>
-      <li class="col-3 p-0">
+      <li class="col-6 col-lg-3 p-0">
         <a href=""><span class="catch">キャッチコピー</span><%= image_tag 'top_otera_thumb_02.png' %><span class="name">金閣寺</span></a>
       </li>
-      <li class="col-3 p-0">
+      <li class="col-6 col-lg-3 p-0">
         <a href=""><span class="catch">キャッチコピー</span><%= image_tag 'top_otera_thumb_03.png' %><span class="name">東大寺</span></a>
       </li>
-      <li class="col-3 p-0">
+      <li class="col-6 col-lg-3 p-0">
         <a href=""><span class="catch">キャッチコピー</span><%= image_tag 'top_otera_thumb_04.png' %><span class="name">法隆寺</span></a>
       </li>
     </ul>

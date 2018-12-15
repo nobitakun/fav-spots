@@ -1,9 +1,9 @@
-<% content_for(:title, 'スポット一覧') %>
+<% content_for(:title, '神社仏閣一覧') %>
 <% content_for(:body_class, "spot") %>
 <% content_for(:body_id, "index") %>
 
 <section>
-  <h1>スポット一覧</h1>
+  <h1>神社仏閣一覧</h1>
   <ul class="spot-list">
     <% @spots.each do |spot| %>
       <%= render 'spot_list', spot: spot %>
