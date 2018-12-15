@@ -37,6 +37,10 @@ $theme-color: #d4451d;
   background: $cream;
 }
 
+.bg_theme_color{
+  background: $theme-color;
+}
+
 /*
  * Bootstrap Override
  */
@@ -257,8 +261,32 @@ section{
   font-size: 26px;
 }
 
+/*
+ * Footer
+ */
 
-
+footer{
+  background: #f9f6e6;
+  #footerMenu{
+    border-top: 1px solid #dfcca1;
+    border-bottom: 1px solid #dfcca1;
+    margin-bottom: 80px;
+    #footerNab{
+      .navbar-nav{
+        .nav-item{
+          font-size: 12px;
+          align-items: center;
+          .nav-link{
+            color: #534640;
+          }
+        }
+      }
+    }  
+  }
+  #copyRight{
+    font-size: 12px;
+  }
+}
 
 
 
@@ -433,7 +461,7 @@ section{
   .big_city_list{
     display: flex;
     flex-wrap: wrap;
-    margin: 0 -2px;
+    margin: 0 -2px 0 -3px;
     li{
       margin: 0 2px;
       a{
