@@ -10,7 +10,7 @@
     <h1 class="jumbotron-heading">条件に合った神社仏閣を探す</h1>
     <p class="lead">エリア・ご利益・巡礼・フリーワードで検索できます。</p>
     
-    <div id="homeForm" class="d-flex">
+    <div id="homeForm" class="d-flex mb-3 mb-md-5">
       
       <%= form_tag spot_filter_path, method:'get', class: 'filter-form filter d-flex bg-white' do %>
         <div class="select_wrap pl-2" id="prefWrap">
@@ -32,7 +32,7 @@
       
     </div><!-- #homeForm -->
     
-    <div class="row mt-5">
+    <div class="row">
       <%= link_to '現在地周辺の神社仏閣を探す', root_path, class: 'button_m btn_white mr-auto ml-auto' %>
     </div>
     
@@ -52,7 +52,7 @@
   </div>
 </section>
 
-<section class="mb-0 bg_cream">
+<section class="mb-0 d-none d-md-block bg_cream">
   <div class="container">
     <h1 class="text_light_brown text-center">全国の神社仏閣</h1>
     <div class="row">
@@ -155,7 +155,7 @@
     <h1 class="text-center text_dark_brown">新着の口コミ</h1>
     
     <% if @reviews.any? %>
-      <ul class="review-list vertical-list row mb-5">
+      <ul class="review-list vertical-list row mb-3 mb-md-5">
         <% @reviews.each do |review| %>
           <%= render '/reviews/top_review', review: review %>
         <% end %>
@@ -174,7 +174,7 @@
   <div class="container">
     <h1 class="text-center text-white">お知らせ</h1>
     <% if @infos.any? %>
-    <div class="row mb-5">
+    <div class="row mb-3 mb-md-5">
       <ul class="col-11 col-md-9 mr-auto ml-auto mb-0" id="topInfoList">
         <% @infos.each do |info| %>
           <li>
@@ -230,7 +230,7 @@
 <section class="mb-0 bg_cream">
   <div class="container">
     <h1 class="text_light_brown text-center">特集記事</h1>
-    <ul class="article-list vertical-list row">
+    <ul class="article-list vertical-list row mb-3 mb-md-5">
       <% @parsed_columns.each do |article| %>
         <li class="col-6 col-md-3 bg-white pt-0 pr-0 pl-0 pb-4">
           
@@ -262,7 +262,7 @@
       <% end %>
     </ul>
     
-    <div class="row mt-5">
+    <div class="row">
       <%= link_to '特集記事をもっと見る', @wp_path + '/column', class: 'button_m btn_border mr-auto ml-auto' %>
     </div>
     
@@ -273,7 +273,7 @@
 <section class="bg-white mb-0">
   <div class="container">
     <h1 class="text-center text_dark_brown">体験記事</h1>
-    <ul class="article-list vertical-list row">
+    <ul class="article-list vertical-list row mb-3 mb-md-5">
       <% @parsed_experiences.each do |article| %>
         <li class="col-6 col-md-3 bg-white pt-0 pr-0 pl-0 pb-4">
           
@@ -305,7 +305,7 @@
       <% end %>
     </ul>
     
-    <div class="row mt-5">
+    <div class="row">
       <%= link_to '体験記事をもっと見る', @wp_path + '/experience', class: 'button_m mr-auto ml-auto' %>
     </div>
     
