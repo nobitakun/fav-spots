@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-md fixed-top" id="headerNav">
   
-  <a class="navbar-brand ml-sm-0 ml-md-4" href="/"><%= image_tag('logo.png', class: 'logo') %></a>
+  <%= link_to(image_tag('logo.png', class: 'logo'), root_path, class: 'navbar-brand ml-sm-0 ml-md-4') %>
   <div class="site_description mr-auto">神社仏閣ポータルサイト</div>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler p-0" type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
     <%= content_tag(:i, '', class: 'fa fa-navicon') %>
   </button>
 
@@ -16,24 +16,24 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li class="nav-item">
-        <%= link_to(content_tag(:i, '', class: 'fa fa-search mr-1') + 'スポット検索', spot_search_path, class: 'nav-link') %>
+        <%= link_to(content_tag(:i, '', class: 'fa fa-search mr-1') + '神社仏閣検索', spot_search_path, class: 'nav-link') %>
       </li>
       <li class="nav-item">
-        <%= link_to(content_tag(:i, '', class: 'fa fa-map-marker mr-1') + 'スポット登録', new_spot_path, class: 'nav-link') %>
+        <%= link_to(content_tag(:i, '', class: 'fa fa-map-marker mr-1') + '神社仏閣登録', new_spot_path, class: 'nav-link') %>
       </li>
       <% if logged_in? %>
       
         <li class="nav-item d-md-none">
-          <%= link_to(content_tag(:i, ' マイページ', class: 'fa fa-user'), mypage_path, class: 'nav-link') %>
+          <%= link_to(content_tag(:i, '', class: 'fa fa-user mr-1') + 'マイページ', mypage_path, class: 'nav-link') %>
         </li>
         <li class="nav-item d-md-none">
-          <%= link_to(content_tag(:i, ' プロフィール', class: 'fa fa-address-card'), user_path(current_user), class: 'nav-link') %>
+          <%= link_to(content_tag(:i, '', class: 'fa fa-address-card mr-1') + 'プロフィール', user_path(current_user), class: 'nav-link') %>
         </li>
         <li class="nav-item d-md-none">
-          <%= link_to(content_tag(:i, ' プロフィール編集', class: 'fa fa-cog'), edit_user_path(current_user), class: 'nav-link') %>
+          <%= link_to(content_tag(:i, '', class: 'fa fa-cog mr-1') + 'プロフィール編集', edit_user_path(current_user), class: 'nav-link') %>
         </li>
         <li class="nav-item d-md-none">
-          <%= link_to(content_tag(:i, ' ログアウト', class: 'fa fa-sign-out'), logout_path, method: :delete, class: 'nav-link') %>
+          <%= link_to(content_tag(:i, '', class: 'fa fa-sign-out mr-1') + 'ログアウト', logout_path, method: :delete, class: 'nav-link') %>
         </li>
       
         <li class="nav-item d-none d-md-block dropdown">
@@ -46,7 +46,7 @@
             <%= link_to(content_tag(:i, '', class: 'fa fa-sign-out mr-1') + 'ログアウト', logout_path, method: :delete, class: 'dropdown-item') %>
             <% if admin_logged_in? %>
               <%= link_to(content_tag(:i, '', class: 'fa fa-group mr-1') + 'ユーザー一覧', users_path, class: 'dropdown-item') %>
-              <%= link_to(content_tag(:i, '', class: 'fa fa-map-marker mr-1') + 'スポット登録', new_spot_path, class: 'dropdown-item') %>
+              <%= link_to(content_tag(:i, '', class: 'fa fa-map-marker mr-1') + '神社仏閣登録', new_spot_path, class: 'dropdown-item') %>
               <%= link_to(content_tag(:i, '', class: 'fa fa-check mr-1') + 'カテゴリ登録', new_category_path, class: 'dropdown-item') %>
               <%= link_to(content_tag(:i, '', class: 'fa fa-list-ul mr-1') + 'カテゴリ一覧', categories_path, class: 'dropdown-item') %>
               <%= link_to(content_tag(:i, '', class: 'fa fa-info-circle mr-1') + 'お知らせ登録', new_info_path, class: 'dropdown-item') %>
@@ -56,9 +56,12 @@
         
       <% else %>
         <li class="nav-item">
-          <%= link_to(content_tag(:i, '', class: 'fa fa-user-plus mr-1') + 'ユーザー登録', signup_path, class: 'nav-link') %>
+          <%= link_to(content_tag(:i, '', class: 'fa fa-user-plus mr-1') + 'ユーザー登録', signup_path, class: 'nav-link mr-3') %>
         </li>
-        <li class="nav-item">
+        <li class="d-none d-md-block nav-item">
+          <%= link_to 'ログイン', login_path, class: 'nav-link login_btn' %>
+        </li>
+        <li class="d-block d-md-none nav-item">
           <%= link_to(content_tag(:i, '', class: 'fa fa-sign-in mr-1') + 'ログイン', login_path, class: 'nav-link') %>
         </li>
       <% end %>

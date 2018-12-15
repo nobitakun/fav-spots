@@ -205,6 +205,9 @@ section{
   .site_description{
     color: #fff;
     font-size: 12px;
+    @include media-breakpoint-down(sm){
+      font-size: 10px;
+    }
   }
   .navbar-nav{
     .nav-item{
@@ -213,6 +216,14 @@ section{
       .nav-link{
         color: #fff;
         font-weight: 500;
+      }
+      .login_btn{
+        background: rgba(255, 255, 255, .9);
+        padding: 7px 22px;
+        color: $theme-color;
+        border-radius: 30px;
+        border: 2px solid $white;
+        font-weight: bold;
       }
     }
     .current-user-icon{
@@ -306,18 +317,24 @@ footer{
     padding: 150px 0;
     border-radius: 0;
     @include media-breakpoint-down(sm){
-      padding: 64px 0;
+      padding: 32px 0;
+      background-size: cover;
     }
     h1{
       font-size: 40px;
       text-shadow: 1px 1px 3px #000;
       margin-bottom: 20px;
-       @include media-breakpoint-down(sm){
-         font-size: 26px;
+      @include media-breakpoint-down(sm){
+        font-size: 22px;
+        margin-bottom: 16px;
       }
     }
     .lead{
       font-size: 16px;
+      text-shadow: 1px 1px 3px #000;
+      @include media-breakpoint-down(sm){
+        font-size: 10px;
+      }
     }
   }
   #homeForm{
