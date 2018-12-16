@@ -56,7 +56,7 @@
     <h1 class="text_light_brown text-center">全国の神社仏閣</h1>
     <div class="row">
       
-      <div class="col-12 col-lg-7 col-xl-8 area_link">
+      <div class="area_link">
         <ul class="big_city_list text-center">
           <li><%= link_to '東京', root_path, class: 'tokyo_link' %></li>
           <li><%= link_to '大阪', root_path, class: 'osaka_link' %></li>
@@ -130,22 +130,9 @@
         
       </div>
       
-      <div class="col-5 col-xl-4">
-        <div class="inner">
-          <nav>
-            <ul class="nav nav-pills flex-column text-left">
-              <li class="nav-item">
-                <% if current_page?(root_path) %>
-                <a class="nav-link active" href="/"><i class="fa fa-chevron-right"></i> HOME</a>
-                <% else %>
-                <a class="nav-link" href="/"><i class="fa fa-chevron-right"></i> HOME</a>
-                <% end %>
-              </li>
-              <%= sidebar_list_items() %>
-            </ul>
-          </nav>
-        </div>
-      </div>
+      <aside class="bg-white">
+        <%= render 'layouts/sidebar' %>
+      </aside>
       
     </div>
   </div>

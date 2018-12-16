@@ -489,6 +489,15 @@ footer{
       }
     }/* .vertical-list */
   }/* section */
+  aside{
+    width: 380px;
+    border: 1px solid #d4cecd;
+    padding: 24px;
+    @include media-breakpoint-down(lg){
+      width: 334px;
+      padding: 16px;
+    }
+  }
 }/* .home */
 
 
@@ -498,9 +507,14 @@ footer{
  */
 
 .area_link{
+  width: calc(100% - 400px);
+  margin-right: 20px;
   background: $white;
   border: 1px solid #d4cecd;
   padding: 24px;
+  @include media-breakpoint-down(lg){
+    width: calc(100% - 354px);
+  }
   li{
     list-style: none;
   }
