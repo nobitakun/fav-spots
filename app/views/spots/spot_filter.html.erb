@@ -12,7 +12,7 @@
       <a href="#tab1" class="nav-link active" data-toggle="tab">エリア・カテゴリで絞り込み</a>
     </li>
     <li class="nav-item">
-      <a href="#tab2" class="nav-link" data-toggle="tab">フリーワード検索</a>
+      <a href="#tab2" class="nav-link" data-toggle="tab">神社仏閣名検索</a>
     </li>
   </ul>
   <!--タブのコンテンツ部分-->
@@ -45,9 +45,9 @@
       <%= form_tag ajax_keyword_path, method:'get', class: 'keyword', remote: true do %>
         <%= label :pref, '都道府県' %>
         <%= collection_select(:area, :pref, JpPrefecture::Prefecture.all, :name_e, :name, {prompt: '全国'}, { class: 'form-control mb-3', id: 'prefField' } ) %>
-        <%= label :keyword, 'キーワード' %>
+        <%= label :keyword, '神社仏閣名' %>
         <%= text_field :keywords, :keyword, class: 'form-control', id: 'searchField' %>
-        <%#= submit_tag('再表示', class: 'btn btn-primary btn-block') %>
+        <%#= submit_tag('検索', class: 'btn btn-primary btn-block mt-3') %>
       <% end %>
     </div>
     
