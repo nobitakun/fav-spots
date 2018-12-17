@@ -65,11 +65,11 @@ class SpotsController < ApplicationController
     spots = Spot.all
     
     if params[:pref].present?
-      spots = @spots.where(pref: params[:pref])
+      spots = spots.where(pref: params[:pref])
     end
     
     if params[:category_id].present?
-      spots = @spots.includes(:categories).where(categories: { id: params[:category_id] })
+      spots = spots.includes(:categories).where(categories: { id: params[:category_id] })
     end
     
     @spots = spots.page(params[:page])
