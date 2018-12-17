@@ -1,10 +1,83 @@
-<% content_for(:title, '神社仏閣絞り込み') %>
+<% content_for(:title, '神社仏閣検索') %>
 <% content_for(:body_class, "spot") %>
 <% content_for(:body_id, "filter") %>
 
 <section>
-  <h1>絞り込み結果</h1>
-  <ul class="spot-list">
+  <h1>神社仏閣検索</h1>
+  
+  
+  <!-- タブボタン部分 -->
+  <ul class="nav nav-pills nav-justified">
+    <li class="nav-item">
+      <a href="#tab1" class="nav-link active" data-toggle="tab">エリア・カテゴリで絞り込み</a>
+    </li>
+    <li class="nav-item">
+      <a href="#tab2" class="nav-link" data-toggle="tab">フリーワード検索</a>
+    </li>
+  </ul>
+  <!--タブのコンテンツ部分-->
+  <div class="tab-content mb-5">
+    
+    <div id="tab1" class="tab-pane active">
+      <%= form_tag '#', method:'get', class: 'search' do %>
+        <%= label :pref, '都道府県' %>
+        <%= collection_select('', :pref, JpPrefecture::Prefecture.all, :name_e, :name, {prompt: '全国', selected: params[:pref]}, { class: 'form-control mb-3' } ) %>
+        <%= label :feature, '絞り込み', '', class: 'sort' %>
+        <%= select '', :category_type, [["特徴", 'feature'], ["ご利益", 'luck'], ["巡礼", 'route']], { prompt: "全カテゴリー" }, {class: "form-control mb-3", id: 'category-sort'} %>
+        <%= collection_select('', :category_id, Category.all, :id, :name, {prompt: "カテゴリーを選択してください", selected: params[:category_id]}, { class: 'form-control mb-3', id: 'category-field' } ) %>
+        <div class="mb-3">この条件で</div>
+        <%= submit_tag('再表示', class: 'btn btn-primary btn-block') %>
+      <% end %>
+    </div>
+    
+    <script>
+    $(document).on('change', '#category-sort', function(){
+      var value = $(this).val();
+      $.ajax({
+        type: "GET",
+        url: "<%= ajax_category_select_url %>",
+        data: `value=${value}`
+      });
+    });
+    </script>
+    
+    <div id="tab2" class="tab-pane">
+      <%= form_tag ajax_keyword_path, method:'get', class: 'keyword', remote: true do %>
+        <%= label :pref, '都道府県' %>
+        <%= collection_select(:area, :pref, JpPrefecture::Prefecture.all, :name_e, :name, {prompt: '全国'}, { class: 'form-control mb-3', id: 'prefField' } ) %>
+        <%= label :keyword, 'キーワード' %>
+        <%= text_field :keywords, :keyword, class: 'form-control', id: 'searchField' %>
+        <%#= submit_tag('再表示', class: 'btn btn-primary btn-block') %>
+      <% end %>
+    </div>
+    
+    <script>
+    var timer = [];
+    
+    $(document).on('input', '#searchField', function(e){
+        e.preventDefault();
+        timer.push(1);
+        setTimeout(function(){
+          timer.pop();
+          if(timer.length == 0){
+            var tar = $('#searchField');
+            var input = $.trim(tar.val());
+            var pref = $('#prefField').val();
+            console.log(input);
+            $.ajax({
+              url: '<%= ajax_keyword_url %>',
+              type: 'GET',
+              data: {"keyword": input, "pref": pref}
+            })
+          }
+        },0);
+      });
+      
+    </script>
+    
+  </div>
+
+  <ul id="spotList" class="spot-list">
     <% @spots.each do |spot| %>
       <%= render 'spot_list', spot: spot %>
     <% end %>

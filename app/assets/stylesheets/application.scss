@@ -191,6 +191,9 @@ section{
       margin-bottom: 24px;
     }
   }
+  h2{
+    font-size: 20px;
+  }
 }
 
 
@@ -307,9 +310,22 @@ footer{
 }
 
 
+/*
+ * Sidebar
+ */
 
-
-
+aside{
+  .nav-item{
+    .nav-link{
+      color: $theme-color;
+      font-weight: 500;
+      &.active{
+        background: $theme-color;
+        color: $white;
+      }
+    }
+  }
+}
 
 /*
  * Pages
