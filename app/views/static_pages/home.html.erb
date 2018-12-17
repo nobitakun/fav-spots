@@ -25,8 +25,8 @@
         <%= button_tag(sanitize('<i class="fa fa-search"></i>'), class: 'btn btn-block hover ml-auto') %>
       <% end %>
       
-      <%= form_tag spot_filter_path, method:'get', class: 'search-form filter d-flex ml-auto bg-white' do %>
-        <%= text_field :keywords, :keyword, placeholder: 'フリーワード検索', class: 'form-control', id: 'searchField' %>
+      <%= form_tag spot_search_path, method:'get', class: 'search-form filter d-flex ml-auto bg-white' do %>
+        <%= text_field '', :keyword, placeholder: 'フリーワード検索', class: 'form-control', id: 'searchField' %>
         <%= button_tag(sanitize('<i class="fa fa-search"></i>'), class: 'btn btn-block hover ml-auto') %>
       <% end %>
       

@@ -7,14 +7,14 @@
   
   
   <!-- タブボタン部分 -->
-  <ul class="nav nav-pills nav-justified">
-    <li class="nav-item">
-      <a href="#tab1" class="nav-link active" data-toggle="tab">エリア・カテゴリで絞り込み</a>
-    </li>
-    <li class="nav-item">
-      <a href="#tab2" class="nav-link" data-toggle="tab">神社仏閣名検索</a>
-    </li>
-  </ul>
+  <!--<ul class="nav nav-pills nav-justified">-->
+  <!--  <li class="nav-item">-->
+  <!--    <a href="#tab1" class="nav-link active" data-toggle="tab">エリア・カテゴリで絞り込み</a>-->
+  <!--  </li>-->
+  <!--  <li class="nav-item">-->
+  <!--    <a href="#tab2" class="nav-link" data-toggle="tab">神社仏閣名検索</a>-->
+  <!--  </li>-->
+  <!--</ul>-->
   <!--タブのコンテンツ部分-->
   <div class="tab-content mb-5">
     
@@ -39,40 +39,6 @@
         data: `value=${value}`
       });
     });
-    </script>
-    
-    <div id="tab2" class="tab-pane">
-      <%= form_tag ajax_keyword_path, method:'get', class: 'keyword', remote: true do %>
-        <%= label :pref, '都道府県' %>
-        <%= collection_select(:area, :pref, JpPrefecture::Prefecture.all, :name_e, :name, {prompt: '全国'}, { class: 'form-control mb-3', id: 'prefField' } ) %>
-        <%= label :keyword, '神社仏閣名' %>
-        <%= text_field :keywords, :keyword, class: 'form-control', id: 'searchField' %>
-        <%#= submit_tag('検索', class: 'btn btn-primary btn-block mt-3') %>
-      <% end %>
-    </div>
-    
-    <script>
-    var timer = [];
-    
-    $(document).on('input', '#searchField', function(e){
-        e.preventDefault();
-        timer.push(1);
-        setTimeout(function(){
-          timer.pop();
-          if(timer.length == 0){
-            var tar = $('#searchField');
-            var input = $.trim(tar.val());
-            var pref = $('#prefField').val();
-            console.log(input);
-            $.ajax({
-              url: '<%= ajax_keyword_url %>',
-              type: 'GET',
-              data: {"keyword": input, "pref": pref}
-            })
-          }
-        },0);
-      });
-      
     </script>
     
   </div>

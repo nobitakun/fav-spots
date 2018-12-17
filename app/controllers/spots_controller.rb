@@ -56,9 +56,16 @@ class SpotsController < ApplicationController
   end
   
   def spot_search
-    @features = Category.where(category_type: 'feature')
-    @lucks = Category.where(category_type: 'luck')
-    @routes = Category.where(category_type: 'route')
+    spots = Spot.all
+    
+    if params[:keyword].present?
+      keyword = params[:keyword]
+      spots = spots.where("kana LIKE ? OR name LIKE ?","%" + keyword + "%", "%" + keyword + "%")
+    end
+    @spots = spots.page(params[:page])
+  end
+  
+  def spot_point
   end
   
   def spot_filter

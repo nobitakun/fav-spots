@@ -11,8 +11,9 @@ module ApplicationHelper
   def sidebar_list_items
     items = [
       { text: '神社仏閣一覧', path: spots_path },
-      { text: '神社仏閣検索', path: spot_filter_path },
-      { text: '現在位置付近の神社仏閣', path: spot_search_path },
+      { text: '神社仏閣条件検索', path: spot_filter_path },
+      { text: '神社仏閣名で検索', path: spot_search_path },
+      { text: '現在位置付近の神社仏閣', path: spot_point_path },
       { text: 'エリア一覧', path: prefs_path },
     ]
       
