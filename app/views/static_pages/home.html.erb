@@ -8,7 +8,7 @@
 <section class="jumbotron text-center mb-0">
   <div class="container">
     <h1 class="jumbotron-heading">条件に合った神社仏閣を探す</h1>
-    <p class="lead">エリア・ご利益・巡礼・フリーワードで検索できます。</p>
+    <p class="lead">エリア・ご利益・巡礼・神社仏閣名で検索できます。</p>
     
     <div id="homeForm" class="d-none d-sm-flex mb-3 mb-md-5">
       
@@ -26,15 +26,16 @@
       <% end %>
       
       <%= form_tag spot_search_path, method:'get', class: 'search-form filter d-flex ml-auto bg-white' do %>
-        <%= text_field '', :keyword, placeholder: 'フリーワード検索', class: 'form-control', id: 'searchField' %>
+        <%= text_field '', :keyword, placeholder: '神社仏閣名で検索', class: 'form-control', id: 'searchField' %>
         <%= button_tag(sanitize('<i class="fa fa-search"></i>'), class: 'btn btn-block hover ml-auto') %>
       <% end %>
       
     </div><!-- #homeForm -->
     
     <div class="row">
-      <%= link_to '条件から神社仏閣を探す', root_path, class: 'd-block d-sm-none button_m btn_white mr-auto ml-auto mb-4' %>
-      <%= link_to '現在地周辺の神社仏閣を探す', root_path, class: 'button_m btn_white mr-auto ml-auto' %>
+      <%= link_to '条件から神社仏閣を探す', spot_filter_path, class: 'd-block d-sm-none button_m btn_white mr-auto ml-auto mb-3' %>
+      <%= link_to '神社仏閣名から探す', spot_search_path, class: 'd-block d-sm-none button_m btn_white mr-auto ml-auto mb-3' %>
+      <%= link_to '現在地周辺の神社仏閣を探す', spot_point_path, class: 'button_m btn_white mr-auto ml-auto' %>
     </div>
     
     <script>
@@ -128,7 +129,7 @@
           </li>
         </ul>
         
-      </div>
+      </div><!-- .area_link -->
       
       <aside class="bg-white">
         <%= render 'layouts/sidebar' %>

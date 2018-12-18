@@ -9,14 +9,16 @@
     <a class="user-link" href="<%= user_path(@review.user) %>"><%= user_icon_thumb60(@review.user, 'rounded-circle mr-2') %><span><%= @review.user.name %></span><span class="time text-muted"> | <%= time_ago_in_words(@review.created_at) %> ago.</span></a>
   </div>
 
-  <%= simple_format @review.comment %>
-  <% @review.pictures.each do |picture| %>
-    <% if picture.image.present? %>
-      <%= image_tag picture.image.url, class: '' %>
+  <div class="review-content">
+    <%= simple_format @review.comment %>
+    <% @review.pictures.each do |picture| %>
+      <% if picture.image.present? %>
+        <%= image_tag picture.image.url, class: '' %>
+      <% end %>
+      <%= simple_format picture.comment %>
     <% end %>
-    <%= simple_format picture.comment %>
-  <% end %>
-  
+  </div>
+
   <% if @review.user == current_user %>
     <%= link_to '削除', review_path(id: @review.spot.id, review_id: @review.id), method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-lg btn-danger' %>
   <% end %>

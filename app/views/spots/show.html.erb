@@ -29,7 +29,7 @@
     });
   }
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAOyCOKNI46ijTFKEZtCUjh9Cx6R4PsO7Q&callback=initMap">
+<script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GEOCODING_API_KEY'] %>&callback=initMap">
 </script>
 
 <section>
@@ -78,23 +78,23 @@
 </section>
 
 <section>
-<h2>口コミ一覧</h2>
-
-<ul class="review-list">
-  <% @reviews.each do |review| %>
-    <%= render '/reviews/review', review: review, picture: review.pictures.first %>
-  <% end %>
-</ul>
-
-<%= link_to 'この神社仏閣の口コミを投稿', new_review_path(@spot), class: 'btn btn-success btn-lg btn-block' %>
-
-<hr />
-
-<%= link_to '神社仏閣一覧へ', spots_path, class: 'btn btn-lg btn-secondary' %>
-<%= link_to '編集', edit_spot_path(@spot), class: 'btn btn-lg btn-warning' %>
-<%= link_to '削除', @spot, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-lg btn-danger' %>
-<% if admin_logged_in? %>
+  <h2>口コミ一覧</h2>
   
-<% end %>
+  <ul class="review-list">
+    <% @reviews.each do |review| %>
+      <%= render '/reviews/review', review: review, picture: review.pictures.first %>
+    <% end %>
+  </ul>
+  
+  <%= link_to 'この神社仏閣の口コミを投稿', new_review_path(@spot), class: 'btn btn-success btn-lg btn-block' %>
+  
+  <hr />
+  
+  <%= link_to '神社仏閣一覧へ', spots_path, class: 'btn btn-lg btn-secondary' %>
+  <%= link_to '編集', edit_spot_path(@spot), class: 'btn btn-lg btn-warning' %>
+  <%= link_to '削除', @spot, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-lg btn-danger' %>
+  <% if admin_logged_in? %>
+    
+  <% end %>
 
 </section>

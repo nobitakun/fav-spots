@@ -29,33 +29,33 @@ module ApplicationHelper
   
   def user_icon_thumb(user)
     if user.image.present?
-      image_tag user.image.thumb.url, class: 'thumb'
+      image_tag user.image.thumb.url, class: 'thumb user_thumb '
     else
-      image_tag 'user_default_300.png', class: 'thumb'
+      image_tag 'user_default_300.png', class: 'thumb user_thumb '
     end
   end
   
   def user_icon_thumb100(user)
     if user.image.present?
-      image_tag user.image.thumb100.url, class: 'thumb'
+      image_tag user.image.thumb100.url, class: 'thumb user_thumb '
     else
-      image_tag 'user_default_100.png', class: 'thumb'
+      image_tag 'user_default_100.png', class: 'thumb user_thumb '
     end
   end
   
   def user_icon_thumb60(user, cls)
     if user.image.present?
-      image_tag user.image.thumb60.url, class: 'thumb ' + cls
+      image_tag user.image.thumb60.url, class: 'thumb user_thumb ' + cls
     else
-      image_tag 'user_default_100.png', class: 'thumb ' + cls
+      image_tag 'user_default_100.png', class: 'thumb user_thumb ' + cls
     end
   end
   
   def review_thumb300(picture, cls)
     if picture.image.present?
-      image_tag picture.image.thumb300.url, class: 'thumb ' + cls
+      image_tag picture.image.thumb300.url, class: 'thumb review_thumb ' + cls
     else
-      image_tag 'review_no_image_300.png', class: 'thumb ' + cls
+      image_tag 'review_no_image_300.png', class: 'thumb review_thumb ' + cls
     end
   end
   

@@ -26,7 +26,7 @@
         <%= select '', :category_type, [["特徴", 'feature'], ["ご利益", 'luck'], ["巡礼", 'route']], { prompt: "全カテゴリー" }, {class: "form-control mb-3", id: 'category-sort'} %>
         <%= collection_select('', :category_id, Category.all, :id, :name, {prompt: "カテゴリーを選択してください", selected: params[:category_id]}, { class: 'form-control mb-3', id: 'category-field' } ) %>
         <div class="mb-3">この条件で</div>
-        <%= submit_tag('再表示', class: 'btn btn-primary btn-block') %>
+        <%= submit_tag('再表示', class: 'button_m btn_border hover mr-auto ml-auto') %>
       <% end %>
     </div>
     

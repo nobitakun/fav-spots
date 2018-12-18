@@ -87,12 +87,16 @@ a:hover{
   opacity: 0.7;
 }
 
+a{
+  color: $light-brown;
+}
 
 /*
  * Button
  */
 
 .button_m{
+  outline: 0;
   background: $theme-color;
   width: 342px;
   color: $white;
@@ -176,6 +180,7 @@ body, input, button, select, optgroup, textarea {
 
 .hover:hover{
   opacity: 0.7;
+  cursor: pointer;
 }
 
 section{
@@ -504,6 +509,19 @@ aside{
         }
       }
     }/* .vertical-list */
+    
+    .area_link{
+      width: calc(100% - 400px);
+      margin-right: 20px;
+      background: $white;
+      border: 1px solid #d4cecd;
+      padding: 24px;
+      @include media-breakpoint-down(lg){
+        width: calc(100% - 354px);
+      }
+    }/* .area_link */
+    
+    
   }/* section */
   aside{
     width: 380px;
@@ -517,20 +535,35 @@ aside{
 }/* .home */
 
 
+/* review */
+.review-info{
+  .user-link{
+    .user_thumb{
+      width: 54px;
+    }
+  }
+}
+
+.review-content{
+  p{
+    margin-bottom: 20px;
+  }
+  img{
+    margin-bottom: 20px;
+  }
+}
+
+
+
+
+
+
 
 /*
  * Comportnents
  */
 
 .area_link{
-  width: calc(100% - 400px);
-  margin-right: 20px;
-  background: $white;
-  border: 1px solid #d4cecd;
-  padding: 24px;
-  @include media-breakpoint-down(lg){
-    width: calc(100% - 354px);
-  }
   li{
     list-style: none;
   }
@@ -708,6 +741,26 @@ aside{
     color: #fff;
   }
 }/* .search-form */
+
+
+.review-list{
+  li.card{
+    .review_thumb{
+      @include media-breakpoint-down(sm){
+        width: 100%;
+      }
+    }
+    .user_thumb{
+      width: 54px;
+    }
+  }
+}/* .review-list */
+
+
+
+
+
+
 
 
 

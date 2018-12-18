@@ -60,7 +60,7 @@ if( navigator.geolocation ){
         <%= label :distance, '距離' %>
         <%= select :latlng, :distance, ['2', '5', '10', '20', '40', '100', '200', '400'], {}, { class: 'form-control mb-3' } %>
         <div class="mb-3">km以内のスポットで</div>
-        <%= submit_tag('再表示', class: 'btn btn-primary btn-block') %>
+        <%= submit_tag('再表示', class: 'button_m btn_border hover mr-auto ml-auto') %>
       <% end %>
     </div>
     
@@ -68,8 +68,6 @@ if( navigator.geolocation ){
 </section>
 
 <section>
-  <h1><i class="fa fa-map-marker" aria-hidden="true"></i> 該当の神社仏閣</h2>
-
   <ul id="spotList" class="spot-list">
     
   </ul>
