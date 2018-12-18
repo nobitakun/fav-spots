@@ -1,13 +1,16 @@
-<% content_for(:title, '口コミ一覧') %>
+<% content_for(:title, '新着口コミ一覧') %>
 <% content_for(:body_class, "review") %>
 <% content_for(:body_id, "index") %>
 
 <section>
-  <h1>口コミ一覧</h1>
+  <h1>新着口コミ一覧</h1>
   
   <ul class="review-list">
     <% @reviews.each do |review| %>
       <%= render '/reviews/review', review: review, picture: review.pictures.first %>
     <% end %>
   </ul>
+  
+  <%= paginate @reviews %>
+  
 </section>

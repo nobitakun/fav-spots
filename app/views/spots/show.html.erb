@@ -86,7 +86,9 @@
     <% end %>
   </ul>
   
-  <%= link_to 'この神社仏閣の口コミを投稿', new_review_path(@spot), class: 'btn btn-success btn-lg btn-block' %>
+  <%= paginate @reviews %>
+  
+  <%= link_to 'この神社仏閣の口コミを投稿', new_review_path(@spot), class: 'button_m mr-auto ml-auto mt-5' %>
   
   <hr />
   

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'mypage', to: 'users#mypage'
   resources :users
   
+  get 'latest_reviews', to: 'reviews#latest'
+  
   resources :spots do
     member do
       get :reviews

@@ -150,7 +150,7 @@
         <% end %>
       </ul>
       <div class="row">
-        <%= link_to '口コミをもっと見る', root_path, class: 'button_m mr-auto ml-auto' %>
+        <%= link_to '口コミをもっと見る', latest_reviews_path, class: 'button_m mr-auto ml-auto' %>
       </div>
     <% else %>
       <p>口コミはまだありません。</p>
@@ -166,14 +166,12 @@
     <div class="row mb-3 mb-md-5">
       <ul class="col-11 col-md-9 mr-auto ml-auto mb-0" id="topInfoList">
         <% @infos.each do |info| %>
-          <li>
-            <%= link_to content_tag(:span, info.created_at.strftime('%Y.%m.%d'), class: 'mr-2 mr-md-5') + info.title, info.url, {target: '_blank'} %>
-          </li>
+          <%= render '/infos/info', info: info %>
         <% end %>
       </ul>
     </div>
     <div class="row">
-      <%= link_to 'お知らせをもっと見る', root_path, class: 'button_m btn_white mr-auto ml-auto' %>
+      <%= link_to 'お知らせをもっと見る', infos_path, class: 'button_m btn_white mr-auto ml-auto' %>
     </div>
     <% else %>
       <p>お知らせはまだありません。</p>

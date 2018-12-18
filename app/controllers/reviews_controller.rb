@@ -2,6 +2,10 @@ class ReviewsController < ApplicationController
   before_action :require_user_logged_in, only: [:new, :destroy]
   before_action :set_review, only: []
   
+  def latest
+    @reviews = Review.all.order('created_at DESC').page(params[:page])
+  end
+  
   def index
   end
   

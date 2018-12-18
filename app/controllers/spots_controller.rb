@@ -12,7 +12,7 @@ class SpotsController < ApplicationController
   end
 
   def show
-    @reviews = @spot.reviews.order('created_at DESC')
+    @reviews = @spot.reviews.order('created_at DESC').page(params[:page])
   end
 
   def create

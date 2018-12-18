@@ -1,5 +1,6 @@
 class InfosController < ApplicationController
   def index
+    @infos = Info.order('created_at DESC').page(params[:page])
   end
 
   def new
