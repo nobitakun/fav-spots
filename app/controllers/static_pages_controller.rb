@@ -21,10 +21,14 @@ class StaticPagesController < ApplicationController
     response = conn.get '/wp-json/wp/v2/columns?_embed'
     
     @parsed_columns = JSON.parse(response.body)
+    
+    @parsed_columns = @parsed_columns.sort_by { |hash| hash['post_meta']['post_views_count'] }
   
     response = conn_experience.get '/wp-json/wp/v2/experiences?_embed' 
     
     @parsed_experiences = JSON.parse(response.body)
+    
+    @parsed_experiences = @parsed_experiences.sort_by { |hash| hash['post_meta']['post_views_count'] }
   end
 
   def dbmap

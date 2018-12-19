@@ -216,9 +216,9 @@
 
 <section class="mb-0 bg_cream">
   <div class="container">
-    <h1 class="text_light_brown text-center">特集記事</h1>
+    <h1 class="text_light_brown text-center">人気の特集記事</h1>
     <ul class="article-list vertical-list row mb-3 mb-md-5">
-      <% @parsed_columns.first(4).each do |article| %>
+      <% @parsed_columns.reverse!.first(4).each do |article| %>
         <li class="col-6 col-md-3 bg-white pt-0 pr-0 pl-0 pb-4">
           
           <%= link_to article['link'], target: '_blank' do %>
@@ -259,9 +259,9 @@
 
 <section class="bg-white mb-0">
   <div class="container">
-    <h1 class="text-center text_dark_brown">体験記事</h1>
+    <h1 class="text-center text_dark_brown">人気の体験記事</h1>
     <ul class="article-list vertical-list row mb-3 mb-md-5">
-      <% @parsed_experiences.first(4).each do |article| %>
+      <% @parsed_experiences.reverse!.first(4).each do |article| %>
         <li class="col-6 col-md-3 bg-white pt-0 pr-0 pl-0 pb-4">
           
           <%= link_to article['link'], target: '_blank' do %>
