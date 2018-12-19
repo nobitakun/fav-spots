@@ -15,6 +15,8 @@ module ApplicationHelper
       { text: '神社仏閣名で検索', path: spot_search_path },
       { text: '現在位置付近の神社仏閣', path: spot_point_path },
       { text: 'エリア一覧', path: prefs_path },
+      { text: '新着口コミ一覧', path: latest_reviews_path },
+      { text: 'お知らせ一覧', path: infos_path }
     ]
       
     html = ''

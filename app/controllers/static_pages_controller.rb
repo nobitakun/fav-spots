@@ -20,11 +20,11 @@ class StaticPagesController < ApplicationController
 
     response = conn.get '/wp-json/wp/v2/columns?_embed'
     
-    @parsed_columns = JSON.parse(response.body) 
-    
+    @parsed_columns = JSON.parse(response.body)
+  
     response = conn_experience.get '/wp-json/wp/v2/experiences?_embed' 
     
-    @parsed_experiences = JSON.parse(response.body) 
+    @parsed_experiences = JSON.parse(response.body)
   end
 
   def dbmap

@@ -2,10 +2,10 @@
   <nav class="container navbar p-1 p-md-2" id="footerNab">
     <ul class="nav navbar-nav navbar-right flex-row d-none d-md-flex">
     	<li class="nav-item mr-4">
-        <%= link_to(image_tag('list_icon_s.png', class: 'mr-2') + 'プライバシーポリシー', root_path, class: 'nav-link') %>
+        <%= link_to(image_tag('list_icon_s.png', class: 'mr-2') + 'プライバシーポリシー', ENV['WP_PATH'] + '/privacy-policy/', class: 'nav-link', target: '_blank') %>
       </li>
       <li class="nav-item mr-4">
-        <%= link_to(image_tag('list_icon_s.png', class: 'mr-2') + 'お問い合わせ', root_path, class: 'nav-link') %>
+        <%= link_to(image_tag('list_icon_s.png', class: 'mr-2') + 'お問い合わせ', ENV['WP_PATH'] + '/contact/', class: 'nav-link', target: '_blank') %>
       </li>
     </ul>
   </nav>

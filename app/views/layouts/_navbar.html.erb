@@ -18,11 +18,20 @@
       <li class="nav-item">
         <%= link_to(content_tag(:i, '', class: 'fa fa-search mr-1') + '神社仏閣検索', spot_filter_path, class: 'nav-link') %>
       </li>
+      <li class="nav-item d-md-none">
+        <%= link_to(content_tag(:i, '', class: 'fa fa-search mr-1') + '神社仏閣名で検索', spot_search_path, class: 'nav-link') %>
+      </li>
+       <li class="nav-item d-md-none">
+        <%= link_to(content_tag(:i, '', class: 'fa fa-edit mr-1') + '新着口コミ一覧', latest_reviews_path, class: 'nav-link') %>
+      </li>
+      <li class="nav-item d-md-none">
+        <%= link_to(content_tag(:i, '', class: 'fa fa-info-circle mr-1') + 'お知らせ一覧', infos_path, class: 'nav-link') %>
+      </li>
       <% if logged_in? %>
       
-        <li class="nav-item d-md-none">
-          <%= link_to(content_tag(:i, '', class: 'fa fa-user mr-1') + 'マイページ', mypage_path, class: 'nav-link') %>
-        </li>
+        <!--<li class="nav-item d-md-none">-->
+          <%#= link_to(content_tag(:i, '', class: 'fa fa-user mr-1') + 'マイページ', mypage_path, class: 'nav-link') %>
+        <!--</li>-->
         <li class="nav-item d-md-none">
           <%= link_to(content_tag(:i, '', class: 'fa fa-address-card mr-1') + 'プロフィール', user_path(current_user), class: 'nav-link') %>
         </li>
@@ -37,7 +46,7 @@
           <a class="nav-link dropdown-toggle" href="/" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="current-user-icon"><%= user_icon_thumb60(current_user, 'rounded-circle') %></span></a>
           <div class="dropdown-menu">
             <h2><%= current_user.name %></h2>
-            <%= link_to(content_tag(:i, '', class: 'fa fa-user mr-1') + 'マイページ', mypage_path, class: 'dropdown-item') %>
+            <%#= link_to(content_tag(:i, '', class: 'fa fa-user mr-1') + 'マイページ', mypage_path, class: 'dropdown-item') %>
             <%= link_to(content_tag(:i, '', class: 'fa fa-address-card mr-1') + 'プロフィール', user_path(current_user), class: 'dropdown-item') %>
             <%= link_to(content_tag(:i, '', class: 'fa fa-cog mr-1') + 'プロフィール編集', edit_user_path(current_user), class: 'dropdown-item') %>
             <%= link_to(content_tag(:i, '', class: 'fa fa-sign-out mr-1') + 'ログアウト', logout_path, method: :delete, class: 'dropdown-item') %>

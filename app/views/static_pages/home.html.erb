@@ -184,31 +184,31 @@
     <h1 class="text-center text-white">神社へ行こう</h1>
     <ul class="d-flex mb-5 row pickup_list">
       <li class="col-6 col-lg-3 p-0">
-        <a href=""><span class="catch">キャッチコピー</span><%= image_tag 'top_jinjya_thumb_01.png' %><span class="name">伊勢神宮</span></a>
+        <a href="<%= ENV['WP_PATH'] %>/column/ise/" target="_blank"><span class="catch">キャッチコピー</span><%= image_tag 'top_jinjya_thumb_01.png' %><span class="name">伊勢神宮</span></a>
       </li>
       <li class="col-6 col-lg-3 p-0">
-        <a href=""><span class="catch">キャッチコピー</span><%= image_tag 'top_jinjya_thumb_02.png' %><span class="name">出雲大社</span></a>
+        <a href="<%= ENV['WP_PATH'] %>/column/izumo/" target="_blank"><span class="catch">キャッチコピー</span><%= image_tag 'top_jinjya_thumb_02.png' %><span class="name">出雲大社</span></a>
       </li>
       <li class="col-6 col-lg-3 p-0">
-        <a href=""><span class="catch">キャッチコピー</span><%= image_tag 'top_jinjya_thumb_03.png' %><span class="name">伏見稲荷大社</span></a>
+        <a href="<%= ENV['WP_PATH'] %>/column/fushimi/" target="_blank"><span class="catch">キャッチコピー</span><%= image_tag 'top_jinjya_thumb_03.png' %><span class="name">伏見稲荷大社</span></a>
       </li>
       <li class="col-6 col-lg-3 p-0">
-        <a href=""><span class="catch">キャッチコピー</span><%= image_tag 'top_jinjya_thumb_04.png' %><span class="name">厳島神社</span></a>
+        <a href="<%= ENV['WP_PATH'] %>/column/itukushima/" target="_blank"><span class="catch">キャッチコピー</span><%= image_tag 'top_jinjya_thumb_04.png' %><span class="name">厳島神社</span></a>
       </li>
     </ul>
     <h1 class="text-center text-white">お寺へ行こう</h1>
     <ul class="row mb-0 pb-0 pickup_list">
       <li class="col-6 col-lg-3 p-0">
-        <a href=""><span class="catch">キャッチコピー</span><%= image_tag 'top_otera_thumb_01.png' %><span class="name">清水寺</span></a>
+        <a href="<%= ENV['WP_PATH'] %>/column/kiyomizu/" target="_blank"><span class="catch">キャッチコピー</span><%= image_tag 'top_otera_thumb_01.png' %><span class="name">清水寺</span></a>
       </li>
       <li class="col-6 col-lg-3 p-0">
-        <a href=""><span class="catch">キャッチコピー</span><%= image_tag 'top_otera_thumb_02.png' %><span class="name">金閣寺</span></a>
+        <a href="<%= ENV['WP_PATH'] %>/column/kinkaku/" target="_blank"><span class="catch">キャッチコピー</span><%= image_tag 'top_otera_thumb_02.png' %><span class="name">金閣寺</span></a>
       </li>
       <li class="col-6 col-lg-3 p-0">
-        <a href=""><span class="catch">キャッチコピー</span><%= image_tag 'top_otera_thumb_03.png' %><span class="name">東大寺</span></a>
+        <a href="<%= ENV['WP_PATH'] %>/column/todaiji/" target="_blank"><span class="catch">キャッチコピー</span><%= image_tag 'top_otera_thumb_03.png' %><span class="name">東大寺</span></a>
       </li>
       <li class="col-6 col-lg-3 p-0">
-        <a href=""><span class="catch">キャッチコピー</span><%= image_tag 'top_otera_thumb_04.png' %><span class="name">法隆寺</span></a>
+        <a href="<%= ENV['WP_PATH'] %>/column/houryuji/" target="_blank"><span class="catch">キャッチコピー</span><%= image_tag 'top_otera_thumb_04.png' %><span class="name">法隆寺</span></a>
       </li>
     </ul>
   </div>
@@ -218,10 +218,10 @@
   <div class="container">
     <h1 class="text_light_brown text-center">特集記事</h1>
     <ul class="article-list vertical-list row mb-3 mb-md-5">
-      <% @parsed_columns.each do |article| %>
+      <% @parsed_columns.first(4).each do |article| %>
         <li class="col-6 col-md-3 bg-white pt-0 pr-0 pl-0 pb-4">
           
-          <%= link_to article['link'] do %>
+          <%= link_to article['link'], target: '_blank' do %>
             <% if article['_embedded']['wp:featuredmedia'].present? %>
               <%= image_tag article['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['full']['source_url'] %>
             <% else %>
@@ -236,7 +236,7 @@
             
             <%= article['date'].to_date.strftime('%Y.%m.%d') %>
             
-            <h2><a href="<%= article['link'] %>"><%= article['title']['rendered'] %></a></h2>
+            <h2><a href="<%= article['link'] %>" target="_blank"><%= article['title']['rendered'] %></a></h2>
             
             <% if article['_embedded']['wp:featuredmedia'].present? %>
               <a href="<%= article['link'] %>"></a>
@@ -250,7 +250,7 @@
     </ul>
     
     <div class="row">
-      <%= link_to '特集記事をもっと見る', @wp_path + '/column', class: 'button_m btn_border mr-auto ml-auto' %>
+      <%= link_to '特集記事をもっと見る', @wp_path + '/column', class: 'button_m btn_border mr-auto ml-auto', target: '_blank' %>
     </div>
     
   </div>
@@ -261,10 +261,10 @@
   <div class="container">
     <h1 class="text-center text_dark_brown">体験記事</h1>
     <ul class="article-list vertical-list row mb-3 mb-md-5">
-      <% @parsed_experiences.each do |article| %>
+      <% @parsed_experiences.first(4).each do |article| %>
         <li class="col-6 col-md-3 bg-white pt-0 pr-0 pl-0 pb-4">
           
-          <%= link_to article['link'] do %>
+          <%= link_to article['link'], target: '_blank' do %>
             <% if article['_embedded']['wp:featuredmedia'].present? %>
               <%= image_tag article['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['full']['source_url'] %>
             <% else %>
@@ -279,7 +279,7 @@
             
             <%= article['date'].to_date.strftime('%Y.%m.%d') %>
             
-            <h2><a href="<%= article['link'] %>"><%= article['title']['rendered'] %></a></h2>
+            <h2><a href="<%= article['link'] %>" target="_blank"><%= article['title']['rendered'] %></a></h2>
             
             <% if article['_embedded']['wp:featuredmedia'].present? %>
               <a href="<%= article['link'] %>"></a>
@@ -293,7 +293,7 @@
     </ul>
     
     <div class="row">
-      <%= link_to '体験記事をもっと見る', @wp_path + '/experience', class: 'button_m mr-auto ml-auto' %>
+      <%= link_to '体験記事をもっと見る', @wp_path + '/experience', class: 'button_m mr-auto ml-auto', target: '_blank' %>
     </div>
     
   </div>
