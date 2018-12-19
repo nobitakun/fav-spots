@@ -143,6 +143,22 @@ a{
 }
 
 
+.text_link{
+  color: #d4451d;
+  font-size: 16px;
+  font-weight: bold;
+   &:after{
+    font-size: 16px;
+    font-family: "FontAwesome";
+    content: "\f101";
+    margin-left: 10px;
+   }
+}
+
+
+
+
+
 #sideAd{
   width: 300px;
   height: 250px;
@@ -733,6 +749,10 @@ aside{
 
 .review-list{
   li.card{
+    position: relative;
+    .card-body{
+      padding-bottom: 40px;
+    }
     .review_thumb{
       @include media-breakpoint-down(sm){
         width: 100%;
@@ -740,6 +760,11 @@ aside{
     }
     .user_thumb{
       width: 54px;
+    }
+    .text_link{
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
     }
   }
 }/* .review-list */

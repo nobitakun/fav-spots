@@ -9,6 +9,6 @@
       <h3><%= link_to review.spot.name, spot_path(review.spot) %></h3>
     <% end %>
     <p class="card-text"><%= review.comment %></p>
-    <%= link_to '詳細', review_path(id: review.spot.id, review_id: review.id), class: 'btn btn-lg btn-danger' %>
+    <%= link_to '詳細を見る', review_path(id: review.spot.id, review_id: review.id), class: 'text_link' %>
   </div>
 </li>
