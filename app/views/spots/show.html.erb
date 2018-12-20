@@ -88,15 +88,12 @@
   
   <%= paginate @reviews %>
   
-  <%= link_to 'この神社仏閣の口コミを投稿', new_review_path(@spot), class: 'button_m mr-auto ml-auto mt-5' %>
+  <%= link_to 'この神社仏閣の口コミを投稿', new_review_path(@spot), class: 'button_m mr-auto ml-auto mt-5 mb-3' %>
   
-  <hr />
-  
-  <%= link_to '神社仏閣一覧へ', spots_path, class: 'btn btn-lg btn-secondary' %>
-  <%= link_to '編集', edit_spot_path(@spot), class: 'btn btn-lg btn-warning' %>
-  <%= link_to '削除', @spot, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-lg btn-danger' %>
+  <%= link_to '神社仏閣一覧へ', spots_path, class: 'button_m btn_border hover mr-auto ml-auto' %>
   <% if admin_logged_in? %>
-    
+    <%= link_to '編集', edit_spot_path(@spot), class: 'btn btn-lg btn-warning' %>
+    <%= link_to '削除', @spot, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-lg btn-danger' %>
   <% end %>
 
 </section>

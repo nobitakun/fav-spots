@@ -15,12 +15,12 @@
   </div>
   
   <%= link_to_add_association '写真を追加', f, :pictures,
-    class: 'btn btn-success mb-4',
+    class: 'button_l mb-4',
     data: {
       association_insertion_node: '#detail-association-insertion-point',
       association_insertion_method: 'append' }
    %>
   
-  <%= f.submit '投稿する', class: 'btn btn-primary btn-block' %>
+  <%= f.submit '投稿する', class: 'button_m btn_border hover mr-auto ml-auto' %>
   
 <% end %>
