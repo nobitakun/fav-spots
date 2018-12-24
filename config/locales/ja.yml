@@ -24,6 +24,9 @@ ja:
       category:
         name: カテゴリー名
         slug: スラッグ
+      info:
+        title: タイトル
+        url: URL
     errors:
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"
