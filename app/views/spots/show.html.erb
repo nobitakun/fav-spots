@@ -37,9 +37,12 @@
 
 <%= spot_icon_thumb(@spot) %>
 
-<% @spot.categories.each do |category| %>
-  <span class="badge badge-pill badge-secondary"><%= category.name %></span>
-<% end %>
+<div class="tag-list">
+  <% @spot.categories.each do |category| %>
+    <span class="badge badge-pill badge-secondary"><%= category.name %></span>
+  <% end %>  
+</div>
+
 <% if @spot.overview %>
   <div class="card spot-overview">
     <%= simple_format(@spot.overview) %>
