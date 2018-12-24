@@ -347,6 +347,25 @@ footer{
   }
 }
 
+#page-top{
+  font-size: 36px;
+  position: fixed;
+  display: block;
+  bottom: 40px;
+  right: 40px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  background: $white;
+  border: 2px solid $theme-color;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.14);
+  color: $theme-color;
+  border-radius: 100%;
+  box-sizing: border-box;
+  z-index: 10;
+  line-height: 1;
+}
+
 
 /*
  * Sidebar
@@ -891,6 +910,16 @@ aside{
       &:hover{
         text-decoration: none;
         background: #eee;
+      }
+      .spot_thumb{
+        width: 120px;
+        border-radius: 10px;
+        float: left;
+        margin-right: 16px;
+      }
+      .wrap{
+        overflow: hidden;
+        display: block;
       }
       span{
         vertical-align: middle;

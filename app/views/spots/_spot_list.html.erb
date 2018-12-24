@@ -1,9 +1,12 @@
 <li>
-  <a href="<%= spot_path(spot) %>">
+  <a href="<%= spot_path(spot) %>" class="clearfix">
+    <%= spot_icon_thumb(spot) %>
+    <span class="wrap">
     <%= content_tag(:span, spot.name + "（" + spot.reviews.count.to_s + "）", class: 'spot-name') %>
     <% spot.categories.each do |category| %>
       <span class="badge badge-pill badge-secondary"><%= category.name %></span>
     <% end %>
     <%= content_tag(:span, spot.address, class: 'spot-address') %>
+    </span>
   </a>
 </li>

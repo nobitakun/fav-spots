@@ -29,6 +29,14 @@ module ApplicationHelper
     raw(html)
   end
   
+  def spot_icon_thumb(spot)
+    if spot.image.present?
+      image_tag spot.image.thumb.url, class: 'thumb spot_thumb '
+    else
+      image_tag 'spot_no_image.png', class: 'thumb spot_thumb '
+    end
+  end
+  
   def user_icon_thumb(user)
     if user.image.present?
       image_tag user.image.thumb.url, class: 'thumb user_thumb '

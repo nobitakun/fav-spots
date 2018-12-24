@@ -35,6 +35,8 @@
 <section>
 <h1><%= @spot.name %>(<%= @spot.kana %>)</h1>
 
+<%= spot_icon_thumb(@spot) %>
+
 <% @spot.categories.each do |category| %>
   <span class="badge badge-pill badge-secondary"><%= category.name %></span>
 <% end %>

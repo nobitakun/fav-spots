@@ -12,6 +12,8 @@ class Spot < ApplicationRecord
   has_many :categories, through: :category_spots
   has_many :pictures, through: :reviews
   
+  mount_uploader :image, ImageUploader
+  
   geocoded_by :address
   after_validation :geocode
   
