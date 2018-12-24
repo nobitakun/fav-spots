@@ -351,6 +351,10 @@ footer{
   box-sizing: border-box;
   z-index: 10;
   line-height: 1;
+  @include media-breakpoint-down(sm){
+    right: 16px;
+    bottom: 16px;
+  }
 }
 
 
