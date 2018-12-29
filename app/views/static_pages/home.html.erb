@@ -58,13 +58,8 @@
     <div class="row">
       
       <div class="area_link">
-        <ul class="d-none d-lg-flex big_city_list text-center">
-          <li><%= link_to '東京', pref_path(pref: 'Tokyo'), class: 'tokyo_link' %></li>
-          <li><%= link_to '大阪', pref_path(pref: 'Osaka'), class: 'osaka_link' %></li>
-          <li><%= link_to '京都', pref_path(pref: 'Kyoto'), class: 'kyoto_link' %></li>
-          <li><%= link_to '愛知', pref_path(pref: 'Aichi'), class: 'aichi_link' %></li>
-          <li><%= link_to '福岡', pref_path(pref: 'Fukuoka'), class: 'fukuoka_link' %></li>
-        </ul>
+        
+        <%= render '/spots/big_city_list' %>
         
         <ul class="text-left row mb-0 mt-lg-4 pref_list">
           <li class="col-12 col-xl-6">
