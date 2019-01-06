@@ -22,6 +22,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="//kitchen.juicer.cc/?color=<%= ENV['JUICER_ID'] %>" async></script>
     <meta name="google-site-verification" content="<%= ENV['SEARCH_CONSOLE_ID'] %>" />
+    <%= favicon_link_tag('favicon.ico') %>
   </head>
 
   <body class="<%= yield(:body_class) %>" id="<%= yield(:body_id) %>">
